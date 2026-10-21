@@ -11,7 +11,14 @@ export const CATEGORIES = [
   {name:'Outros',icon:'✨',color:'#9AA5B5'}
 ];
 export const INCOME_CATEGORIES = ['Salário','Bolsa','Mesada','Trabalho','Vendas','Outros'];
-export function id() { return crypto.randomUUID(); }
+export function id() {
+  if(globalThis.crypto?.randomUUID)return crypto.randomUUID();
+  if(!globalThis.crypto?.getRandomValues)throw new Error('O sistema precisa de geração segura de identificadores.');
+  const bytes=crypto.getRandomValues(new Uint8Array(16));
+  bytes[6]=(bytes[6]&15)|64;bytes[8]=(bytes[8]&63)|128;
+  const h=[...bytes].map(x=>x.toString(16).padStart(2,'0')).join('');
+  return `${h.slice(0,8)}-${h.slice(8,12)}-${h.slice(12,16)}-${h.slice(16,20)}-${h.slice(20)}`;
+}
 export function today(date = new Date()) { return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`; }
 export function month(date = today()) { return date.slice(0, 7); }
 export function cents(value) {

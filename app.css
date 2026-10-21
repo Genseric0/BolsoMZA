@@ -30,3 +30,40 @@
 button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #d5c3ff;outline-offset:2px}
 @media(max-width:680px){.recurring-banner{align-items:flex-start;flex-direction:column;padding:23px}.recurring-banner>div:last-child{align-items:flex-start}.recurring-banner>div:last-child strong{font-size:28px}.bill-row{gap:10px}.bill-right .btn{font-size:10px;padding:7px}.bill-day{width:42px;flex-basis:42px}.bill-copy small{font-size:10px}}
 @media(max-width:360px){.bill-row{flex-wrap:wrap}.bill-right{width:100%;padding-left:52px;flex-direction:row;align-items:center;justify-content:space-between}}
+/* v1.1 — mobile-first visual refinement, inspired by Figma financial design systems.
+   No stock illustration, fake finance data or sample-user credentials in production UI. */
+.auth-shell{background:#0c0c14}
+.auth-side{background:radial-gradient(ellipse at 78% 20%,#6450a650,transparent 58%),linear-gradient(140deg,#211a35,#12121e);border-color:#353045}
+.auth-preview{background:#181726a6;border:1px solid #554572;border-radius:24px;padding:30px}
+.auth-preview strong{font-size:31px;line-height:1.17;max-width:380px;letter-spacing:-1.2px}
+.auth-preview p{font-size:13px;line-height:1.65;color:#beb3d7}
+.auth-form .input{min-height:52px;border-radius:15px;background:#1c1b29;border:1px solid #363244;color:#fbfaff}
+.auth-form .input:focus-visible{outline:2px solid #a990fb;outline-offset:2px}
+.auth-form .btn.primary{min-height:53px;border-radius:15px;font-size:14px;box-shadow:0 11px 25px #a385fd25}
+.auth-form h2{font-weight:800;letter-spacing:-.95px}
+.auth-form>p{font-size:13px}
+.auth-form .field label{font-size:12px;color:#c3bfd4;display:block;margin-bottom:9px}
+.password-input{position:relative}
+.password-input .input{padding-right:84px;width:100%}
+.password-toggle{position:absolute;top:0;bottom:0;right:9px;background:transparent;color:#d3c1ff;border:0;font-size:12px;font-weight:750;padding:0 10px}
+.auth-switch{margin-top:24px;font-size:13px}
+.auth-switch button{font-size:13px}
+.auth-extra{margin-top:30px;padding-top:18px}
+.auth-content{background:#0c0c14}
+@media(max-width:680px){
+ .auth-shell{min-height:100dvh}
+ .auth-side{padding:25px 25px 19px;border:0;background:radial-gradient(ellipse at 95% 0%,#62519250,transparent 60%),#151322}
+ .auth-side .logo{font-size:23px}
+ .auth-side .logo small{font-size:9px;letter-spacing:.55px;text-transform:none}
+ .auth-side .brand-mark{height:41px;width:41px}
+ .auth-side .eyebrow{display:none}
+ .auth-side h1{font-size:28px;line-height:1.13;letter-spacing:-.95px;margin:24px 0 0;font-weight:810}
+ .auth-side p{display:none}
+ .auth-content{padding:27px 24px calc(30px + env(safe-area-inset-bottom))}
+ .auth-form h2{font-size:26px;margin-top:14px}
+ .auth-form .field{margin-bottom:15px}
+ .auth-form .chip{font-size:9px;padding:7px 10px}
+ .auth-form>p{margin-bottom:24px}
+ .auth-extra{margin-top:27px}
+}
+@media(max-width:380px){.auth-side{padding:22px 20px 16px}.auth-content{padding:20px 20px 30px}}

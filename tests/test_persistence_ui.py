@@ -1,9 +1,10 @@
 """Teste visual do rollback se persistência falhar (Chromium isolado sem IndexedDB real)."""
 from playwright.sync_api import sync_playwright
+import shutil
 from test_visual_preview import bundle,ROOT
 
 with sync_playwright() as p:
-    browser=p.chromium.launch(headless=True,executable_path='/usr/bin/chromium',args=['--no-sandbox'])
+    browser=p.chromium.launch(headless=True,executable_path=shutil.which('chromium') or None,args=['--no-sandbox'])
     page=browser.new_page(viewport={'width':390,'height':844})
     errors=[]
     page.on('pageerror',lambda e:errors.append(str(e)))

@@ -3,11 +3,12 @@ android {
     namespace 'mz.bolso.app'
     compileSdk 35
     defaultConfig {
-        applicationId 'mz.bolso.app'
+        applicationId 'mz.bolso.app.v2'
         minSdk 24
         targetSdk 35
-        versionCode 2
-        versionName '1.0.0'
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        versionCode 3
+        versionName '1.1.0-beta'
     }
     buildTypes {
         release { minifyEnabled false }
@@ -15,4 +16,8 @@ android {
     }
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
 }
-dependencies { implementation 'androidx.webkit:webkit:1.12.1' }
+dependencies {
+    implementation 'androidx.webkit:webkit:1.12.1'
+    androidTestImplementation 'androidx.test:runner:1.6.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+}

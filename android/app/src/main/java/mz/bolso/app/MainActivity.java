@@ -66,6 +66,7 @@ public final class MainActivity extends Activity {
         });
         // Only our packaged app is allowed to run JS. The bridge never reads files or exposes private data.
         webView.addJavascriptInterface(new ExportBridge(), "BolsoMZAndroid");
+        webView.addJavascriptInterface(new NativeVaultBridge(this), "BolsoMZVault");
         setContentView(webView);
         webView.loadUrl(ORIGIN + "/assets/index.html");
     }
@@ -112,7 +113,7 @@ public final class MainActivity extends Activity {
         });
     }
     @Override protected void onDestroy() {
-        if(webView!=null){webView.removeJavascriptInterface("BolsoMZAndroid");webView.destroy();webView=null;}
+        if(webView!=null){webView.removeJavascriptInterface("BolsoMZAndroid");webView.removeJavascriptInterface("BolsoMZVault");webView.destroy();webView=null;}
         super.onDestroy();
     }
 }

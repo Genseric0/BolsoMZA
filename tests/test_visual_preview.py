@@ -3,6 +3,7 @@ A política de navegação do ambiente de teste bloqueia navegação a URLs, ent
 injetamos o bundle num documento about:blank sem persistir dados.
 """
 from pathlib import Path
+import shutil
 from playwright.sync_api import sync_playwright
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -16,7 +17,7 @@ def bundle():
 
 def run():
  with sync_playwright() as p:
-  browser=p.chromium.launch(headless=True,executable_path='/usr/bin/chromium',args=['--no-sandbox'])
+  browser=p.chromium.launch(headless=True,executable_path=shutil.which('chromium') or None,args=['--no-sandbox'])
   for name,width,height in [('mobile',390,844),('desktop',1365,850)]:
    page=browser.new_page(viewport={'width':width,'height':height},device_scale_factor=1)
    errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
@@ -25,7 +26,7 @@ def run():
    page.add_script_tag(content=bundle())
    assert page.get_by_text('Bem-vindo de volta').count()==1,errors
    page.screenshot(path=str(ROOT/'tests'/f'preview_auth_{name}.png'),full_page=True)
-   page.locator('[data-action="demo"]').click()
+   page.evaluate('''() => {vault=demoVault();demo=true;view='dashboard';render();}''')
    assert page.get_by_text('Visão geral').count()==1,errors
    assert page.get_by_text('Novo computador').count()>=1,errors
    page.screenshot(path=str(ROOT/'tests'/f'preview_dashboard_{name}.png'),full_page=True)

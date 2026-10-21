@@ -1,85 +1,34 @@
-# BolsoMZ 1.0 — Finanças pessoais em meticais
+# BolsoMZ 1.1 beta — Finanças pessoais (Moçambique)
 
-Aplicação original de controlo financeiro **local, privada, sem anúncios e preparada para Android**, com interface responsiva. Desenvolvida para registar gastos reais do dia a dia em Moçambique (incluindo chapa), definir metas e acompanhar a poupança.
+Aplicação de finanças pessoais Android offline. Controlo de gastos e poupança em meticais: chapa, mesadas/receitas, despesas, contas, orçamentos, metas e pagamentos fixos.
 
-## Funcionalidades implementadas
+## Corrigido nesta versão
 
-- Cadastro de perfis **locais** e entrada com palavra-passe (não é uma conta na nuvem).
-- Dados financeiros **encriptados em IndexedDB** (Web Crypto: AES-GCM 256, PBKDF2-SHA-256, salt exclusivo e 260 mil iterações).
-- Dashboard com saldo total, disponível, reservado, entradas/saídas, gráficos e últimas transações.
-- Gestão de dinheiro em carteira, M-Pesa, e-Mola, banco, poupança e contas personalizadas. Não há integração automática com prestadores.
-- Registo de receitas, despesas por categorias e transferências internas com centavos inteiros.
-- Filtros por mês, tipo e pesquisa; exclusão de transações sem violar invariantes financeiras.
-- Metas de poupança, reservas e levantamentos com proteção de valores já reservados.
-- Orçamentos por categoria com barras de progresso.
-- **Pagamentos fixos mensais**: nome, categoria, vencimento, conta, marcação manual de pagamento, prevenção de lançamentos duplicados e calendário mensal.
-- Simulador de **chapa**: preço por viagem, viagens/dia, dias/mês e registo da despesa real uma vez por dia.
-- Exportação de cópia de segurança encriptada, restauração com palavra-passe, CSV de movimentos (não encriptado) e **alteração de palavra-passe**.
-- Modo de demonstração com valores fictícios.
-- PWA instalável via Chrome Android com alojamento HTTPS e funcionamento offline depois da primeira abertura.
-- Projeto Android nativo com WebViewAssetLoader, suporte a abrir backup JSON e guardar ficheiros com o seletor nativo Android. O projeto Android está preparado **para compilação**, não inclui APK já compilado.
+- **Login/cadastro:** corrigido o bug de propriedade DOM: o campo `name="id"` ocultava `HTMLFormElement.id`. O código agora usa `form.getAttribute('id')` para escolher o tratamento de login/cadastro.
+- **Cofre Android nativo:** `NativeVaultBridge.java` utiliza PBKDF2-HMAC-SHA256 (260 000 iterações), salt individual, AES-256-GCM, armazenamento privado e tokens de sessão em memória. O login Android não depende de IndexedDB/WebCrypto da WebView. Os dados não vão para um servidor.
+- **Interface:** ecrã de autenticação mobile mais compacto, botão mostrar/ocultar palavra-passe, melhor contraste; removido o acesso à demonstração na UI de produção e textos promocionais desnecessários.
+- **Testes:** fluxos automatizados de registo, despesa, logout, password errada e login em 390/1365 px; testes instrumentados do cofre num emulador Android pelo workflow de CI.
+- **Compatibilidade:** identificadores de movimentos gerados mesmo em WebViews sem `crypto.randomUUID`, desde que exista `crypto.getRandomValues`.
 
-## Executar no computador
+## Atenção à instalação
 
-No Windows, abrir `iniciar-windows.bat` (requer Python 3). Em Linux/macOS, abrir o terminal na pasta e executar:
+Esta beta usa `applicationId mz.bolso.app.v2`, **separado do APK 1.0**. Isto permite instalar as duas versões lado a lado, já que APKs de teste GitHub podem usar assinaturas diferentes. **Não desinstales o APK antigo antes de verificar os teus dados e o backup.** Os dados da versão antiga não migram automaticamente para a nova. Pode ser possível restaurar uma cópia encriptada exportada com a palavra-passe correta, mas a migração entre cofres ainda requer validação em Android real.
 
-```bash
-python3 -m http.server 8000
-```
+## Construção pelo GitHub Actions
 
-Abrir `http://localhost:8000`, selecionar **Criar conta** e começar. Node.js **não é necessário para usar** a aplicação; só para testes e compilação Android.
+O workflow `.github/workflows/android-apk.yml` executa testes Node e testes de interface Chromium, compila o APK e corre um teste de cofre Android em emulador. Se o job APK tiver sucesso, o ficheiro `app-debug.apk` fica disponível em **Actions → execução → Artifacts → BolsoMZ-v1-1-Android-APK-TESTE**. Assegura-te de testar no teu Android antes de guardar dados financeiros importantes.
 
-## Instalar no Android pelo Chrome (PWA)
+## Funcionalidades
 
-A versão web precisa de um endereço **HTTPS**. Publicar apenas os ficheiros `index.html`, `app.js`, `app.css`, `core.js`, `vault.js`, `sw.js`, `manifest.webmanifest` e `assets/` na Vercel ou GitHub Pages. Depois, no Chrome Android: visitar o endereço, abrir `⋮` → **Instalar aplicação** ou **Adicionar ao ecrã principal**. O código inclui o workflow `.github/workflows/pwa-pages.yml`, mas a publicação não foi realizada nesta entrega.
+- Cadastro e login locais sem servidor ou conta bancária conectada.
+- Saldos, carteira, M-Pesa/e-Mola registados manualmente e transferência entre contas virtuais.
+- Entradas/despesas com categorias e histórico, orçamentos e gráficos.
+- Cálculo e registo de despesas de chapa da faculdade.
+- Metas de poupança, pagamentos fixos mensais, backups encriptados, CSV e mudança de password.
+- Mobile Android e aplicação web responsiva: a versão web continua a usar IndexedDB/WebCrypto.
 
-**Atenção:** o ZIP não instala automaticamente uma aplicação no Android. Abrir `index.html` diretamente por `file://` não é recomendado: o cofre exige origem segura (HTTPS ou localhost).
+## Segurança e limites
 
-## APK nativo Android — projeto preparado
+Os 19 testes de regras existentes não eram um teste da experiência completa. O novo teste E2E do formulário detetou e valida o bug do login. A auditoria de segurança não está completa. Um APK pode passar em CI e ainda apresentar problemas específicos num telefone. Guarda backups e **não partilhes a tua palavra-passe, ficheiros de backup ou movimentos financeiros em issues públicos do GitHub**.
 
-Pasta `android/`: aplicação Java com Android WebView e recursos HTML/CSS/JS integrados dentro do pacote. Suporta Android 7+ (API 24), com AndroidX WebKit e JDK 17. A app utiliza origem local segura `https://appassets.androidplatform.net/assets/`, **sem exigir servidor externo**. Os dados ficam numa área privada da app. O WebView inclui exportação e importação de backups via seletor nativo.
-
-O workflow `.github/workflows/android-apk.yml` testa, prepara os recursos e compila um **APK de teste** no GitHub Actions (quando o repositório for publicado e o workflow executado). O APK gerado, se a compilação passar, surge nos artefactos da execução sob `BolsoMZ-Android-APK-TESTE`.
-
-Para gerar localmente com Android SDK e Gradle 8.9:
-
-```bash
-npm test
-npm run android:sync
-cd android
-gradle :app:assembleDebug
-```
-
-O comando `npm run android:sync` deve ser executado após modificações na versão web. A versão de produção exigirá assinatura de release, teste real do APK e revisão de segurança antes da distribuição.
-
-## Segurança, privacidade e backups
-
-- Nenhum servidor é utilizado para cadastro ou transações. A aplicação não lê automaticamente contas bancárias nem serviços financeiros.
-- **Não esqueças a palavra-passe.** Não existe serviço de recuperação remota; cópias antigas usam a palavra-passe anterior à alteração.
-- A base de dados pertence ao navegador/perfil (PWA) ou à app Android (WebView). São armazenamentos **separados**. Para migrar, exportar o JSON encriptado, depois importar no outro ambiente.
-- A desinstalação, reposição do telefone e limpeza dos dados locais podem eliminar a base de dados. Cria backups regularmente e verifica uma restauração antes de depender da aplicação para dados importantes.
-- CSV é exportado **sem encriptação**. Não publiques nem partilhes relatórios pessoais sem intenção.
-- Apenas o utilizador confirma pagamentos fixos. Uma despesa não equivale a transferência real por M-Pesa, e-Mola ou banco.
-- O modo demonstração não grava dados reais.
-- Não foi efetuado um pentest externo nem teste no Android físico. Consulta `SECURITY.md` e `RELATORIO_TESTES.md`.
-
-## Testes executados
-
-`npm test`: 19 testes automatizados aprovados (domínio financeiro, pagamentos fixos, criptografia em IndexedDB simulado, rotação de palavra-passe, segurança estática e integridade dos recursos Android). `python3 tests/test_visual_preview.py`: navegação e capturas mobile/desktop em Chromium para dashboard, metas, transporte, orçamentos e pagamentos fixos. `python3 tests/test_persistence_ui.py`: erro de escrita sem mostrar falsamente dados como gravados.
-
-**Limitações reais:** a política de rede do ambiente impediu o teste E2E completo do IndexedDB real em navegador HTTPS; não há Android SDK/Gradle nem telefone físico ligados para executar e testar a compilação e o APK. O código do Android foi preparado, mas não compilado neste ambiente. Não se declara zero bugs nem conformidade total OWASP MASVS.
-
-## Organização
-
-- `index.html`, `app.css`, `app.js`: UI, estilos, interações.
-- `core.js`: motor de movimentos, saldos, orçamentos, chapa, metas e recorrências.
-- `vault.js`: contas locais, encriptação, backup/restore e palavra-passe.
-- `sw.js`, `manifest.webmanifest`, `assets/`: PWA offline.
-- `android/`: projeto nativo Android com WebViewAssetLoader.
-- `scripts/sync-android-assets.mjs`: copia a aplicação para `android/app/src/main/assets`.
-- `tests/`: testes automatizados e screenshots.
-- `.github/workflows/`: CI Node, compilação do APK e publicação opcional da PWA.
-
-## Referências arquiteturais
-
-Inspirado em padrões de experiência de aplicações open source de orçamento e nas orientações oficiais do Android WebViewAssetLoader. O código e a interface foram implementados de forma original, sem redistribuir códigos ou interfaces proprietárias.
+Para testar localmente: `npm test`, `python tests/test_native_auth_flow.py`, `python tests/test_persistence_ui.py`, `npm run android:sync`. Para compilar Android: `gradle -p android :app:assembleDebug` com Java 17, Android SDK 35 e Gradle 8.9.

@@ -1,4 +1,4 @@
-name: BolsoMZ - Compilar APK Android de testes
+name: BolsoMZ - Autenticação e Android (v1.1)
 on:
   workflow_dispatch:
   push:
@@ -18,11 +18,22 @@ jobs:
         run: |
           npm run android:sync
           npm test
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Preparar testes de interface
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Cadastro, login e movimentos no ecrã
+        run: |
+          python tests/test_native_auth_flow.py
+          python tests/test_persistence_ui.py
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
-      - uses: android-actions/setup-android@v4
+      - uses: android-actions/setup-android@v3
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
@@ -31,8 +42,37 @@ jobs:
       - name: Criar APK Android (assinatura de teste)
         working-directory: android
         run: gradle --no-daemon :app:assembleDebug
+      - name: Verificar APK gerado
+        run: test -s android/app/build/outputs/apk/debug/app-debug.apk
       - uses: actions/upload-artifact@v4
         with:
-          name: BolsoMZ-Android-APK-TESTE
+          name: BolsoMZ-v1-1-Android-APK-TESTE
           path: android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
+
+  emulator:
+    name: Teste do cofre no emulador Android
+    runs-on: ubuntu-latest
+    needs: apk
+    permissions:
+      contents: read
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+      - name: Testes Android reais (emulador API 30)
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          arch: x86_64
+          profile: pixel_2
+          target: google_apis
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
+          script: cd android && gradle --no-daemon :app:connectedDebugAndroidTest
