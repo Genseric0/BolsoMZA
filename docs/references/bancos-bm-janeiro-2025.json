@@ -1,0 +1,113 @@
+{
+  "retrieved_on": "2026-10-21",
+  "source_url": "https://www.bancomoc.mz/media/zuvbi1t4/rela%C3%A7%C3%A3o-das-icsf-em-funcionamento_janeiro_2025.xls",
+  "source_sha256": "343ee4f55704f83707ae6968023545845fa6b6480622a38c9a987b3c071c099c",
+  "source_as_of": "2025-01",
+  "banks": [
+    {
+      "abbreviation_in_source": "BIM",
+      "legal_name_in_source": "Banco Internacional de Moçambique, SA.",
+      "source_as_of": "2025-01",
+      "current_status": "revalidate_before_production",
+      "account_data_api": "not_verified"
+    },
+    {
+      "abbreviation_in_source": "Absa",
+      "legal_name_in_source": "Absa Bank Moçambique, SA.",
+      "source_as_of": "2025-01",
+      "current_status": "revalidate_before_production",
+      "account_data_api": "not_verified"
+    },
+    {
+      "abbreviation_in_source": "SB",
+      "legal_name_in_source": "Standard Bank, SA.",
+      "source_as_of": "2025-01",
+      "current_status": "revalidate_before_production",
+      "account_data_api": "not_verified"
+    },
+    {
+      "abbreviation_in_source": "BCI",
+      "legal_name_in_source": "Banco Comercial e de Investimentos, SA.",
+      "source_as_of": "2025-01",
+      "current_status": "revalidate_before_production",
+      "account_data_api": "not_verified"
+    },
+    {
+      "abbreviation_in_source": "FCB",
+      "legal_name_in_source": "First Capital Bank , SA.",
+      "source_as_of": "2025-01",
+      "current_status": "revalidate_before_production",
+      "account_data_api": "not_verified"
+    },
+    {
+      "abbreviation_in_source": "BSG",
+      "legal_name_in_source": "Vista Bank Moçambique, SA (Banco Societé Generale Moçambique, SA)",
+      "source_as_of": "2025-01",
+      "current_status": "revalidate_before_production",
+      "account_data_api": "not_verified"
+    },
+    {
+      "abbreviation_in_source": "FNB",
+      "legal_name_in_source": "FNB Moçambique, SA.",
+      "source_as_of": "2025-01",
+      "current_status": "revalidate_before_production",
+      "account_data_api": "not_verified"
+    },
+    {
+      "abbreviation_in_source": "Ecobank",
+      "legal_name_in_source": "Ecobank Moçambique, S.A.",
+      "source_as_of": "2025-01",
+      "current_status": "revalidate_before_production",
+      "account_data_api": "not_verified"
+    },
+    {
+      "abbreviation_in_source": "Moza",
+      "legal_name_in_source": "Moza Banco, SA.",
+      "source_as_of": "2025-01",
+      "current_status": "revalidate_before_production",
+      "account_data_api": "not_verified"
+    },
+    {
+      "abbreviation_in_source": "UBA",
+      "legal_name_in_source": "United Bank for Africa Moçambique, SA.",
+      "source_as_of": "2025-01",
+      "current_status": "revalidate_before_production",
+      "account_data_api": "not_verified"
+    },
+    {
+      "abbreviation_in_source": "Nedbank",
+      "legal_name_in_source": "Nedbank Moçambique, SA.",
+      "source_as_of": "2025-01",
+      "current_status": "revalidate_before_production",
+      "account_data_api": "not_verified"
+    },
+    {
+      "abbreviation_in_source": "BNI",
+      "legal_name_in_source": "Banco Nacional de Investimento, SA.",
+      "source_as_of": "2025-01",
+      "current_status": "revalidate_before_production",
+      "account_data_api": "not_verified"
+    },
+    {
+      "abbreviation_in_source": "BIG",
+      "legal_name_in_source": "Banco BIG Moçambique, SA.",
+      "source_as_of": "2025-01",
+      "current_status": "revalidate_before_production",
+      "account_data_api": "not_verified"
+    },
+    {
+      "abbreviation_in_source": "Letshego",
+      "legal_name_in_source": "Banco Letshego, S.A",
+      "source_as_of": "2025-01",
+      "current_status": "revalidate_before_production",
+      "account_data_api": "not_verified"
+    },
+    {
+      "abbreviation_in_source": "Access",
+      "legal_name_in_source": "Acess Bank Mozambique, SA",
+      "source_as_of": "2025-01",
+      "current_status": "revalidate_before_production",
+      "account_data_api": "not_verified"
+    }
+  ]
+}

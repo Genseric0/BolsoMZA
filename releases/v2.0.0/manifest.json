@@ -1,0 +1,36 @@
+{
+  "received_on": "2026-10-21",
+  "label": "v2.0 enviada pelo utilizador; binário pré-existente, sem recompilação",
+  "apk": {
+    "path": "BolsoMZ-Android-v2.0.apk",
+    "package": "mz.bolso.app",
+    "version_code": 3,
+    "version_name_in_binary": "1.0.0",
+    "version_name_in_source": "2.0.0",
+    "min_sdk": 24,
+    "target_sdk": 35,
+    "compile_sdk": 35,
+    "declared_permissions": [],
+    "web_assets_matching_source": 10,
+    "signer_subject": "CN=BolsoMZ Android v2,O=BolsoMZ,C=MZ",
+    "certificate_sha256": "79409e22fb9c75cf64495d030e73c77de797195c97c296b426590af47640e447",
+    "signature_note": "Certificado extraído do bloco de assinatura v2; assinatura criptográfica completa não validada."
+  },
+  "files": [
+    {
+      "path": "BolsoMZ-Android-v2.0.apk",
+      "size_bytes": 1137654,
+      "sha256": "f2f958a743895cf07605c283ded4cd4b99a99fa7c7489f10a560e662eadf2e3c"
+    },
+    {
+      "path": "BolsoMZ-Android-v2.0-APK.zip",
+      "size_bytes": 1101449,
+      "sha256": "3d4fe8037764a946c128633edafc911e7d1f1e82e2d659c868dcc29c86b9fb17"
+    },
+    {
+      "path": "BolsoMZ-v2-Codigo-Fonte-Android.zip",
+      "size_bytes": 102755,
+      "sha256": "f3e2c25f451aab8a06a3bca06b5762f8b5399f14be1c78a54b3c1be53d4ad9e6"
+    }
+  ]
+}

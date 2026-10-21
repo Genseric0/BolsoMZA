@@ -1,0 +1,92 @@
+[
+  {
+    "file": "01-onboarding-inicial.jpg",
+    "original_name": "Screenshot_2026-10-21-18-47-53-963_mz.bolso.app.jpg",
+    "sha256": "7c4d3ef1fe97076b181b7da4724750afdc2c536a270abdececceebf660ad47da"
+  },
+  {
+    "file": "02-dashboard-saldo-inicial.jpg",
+    "original_name": "Screenshot_2026-10-21-18-50-02-690_mz.bolso.app.jpg",
+    "sha256": "44c20aff32530b9d4ceb62bd938875785d788cdc1e12e0c488544727410852d6"
+  },
+  {
+    "file": "03-registo.jpg",
+    "original_name": "Screenshot_2026-10-21-19-13-57-710_mz.bolso.app.jpg",
+    "sha256": "97a517af425b7da92598a1f821d035ec1fbc67becfa291df4d16e4e72f994981"
+  },
+  {
+    "file": "04-login.jpg",
+    "original_name": "Screenshot_2026-10-21-19-14-07-987_mz.bolso.app.jpg",
+    "sha256": "07800880a069c7e04da969c801cb50fb386885afbd71a87ff05e2af13e022602"
+  },
+  {
+    "file": "05-onboarding-contas.jpg",
+    "original_name": "Screenshot_2026-10-21-19-14-12-281_mz.bolso.app.jpg",
+    "sha256": "ed5db287cd568f12e98984e01087190bb96ece53dc7483f09ec4bb712372db2a"
+  },
+  {
+    "file": "06-onboarding-chapa.jpg",
+    "original_name": "Screenshot_2026-10-21-19-14-15-912_mz.bolso.app.jpg",
+    "sha256": "5286b9649370673e5661cba133628998fbbc958faf57cf0874a48051f1e0364c"
+  },
+  {
+    "file": "07-onboarding-privacidade.jpg",
+    "original_name": "Screenshot_2026-10-21-19-14-18-796_mz.bolso.app.jpg",
+    "sha256": "d6b4576dc948ffc86d8873afe8dd0fc46a6e09bdfbefeeb98d0d165b626a5991"
+  },
+  {
+    "file": "08-dashboard.jpg",
+    "original_name": "Screenshot_2026-10-21-19-14-34-677_mz.bolso.app.jpg",
+    "sha256": "f2ed39e50fd8c400ac0b3fd7505746452d30be50d31dfd1abaa4524ec968f9ad"
+  },
+  {
+    "file": "09-historico.jpg",
+    "original_name": "Screenshot_2026-10-21-19-14-44-831_mz.bolso.app.jpg",
+    "sha256": "60611e5ad69729444c54f80230cf9d6f290a20d6fa8855b6491182663a3a2c08"
+  },
+  {
+    "file": "10-nova-despesa.jpg",
+    "original_name": "Screenshot_2026-10-21-19-14-50-814_mz.bolso.app.jpg",
+    "sha256": "81d5feef669fadbbd7f77fdd84ba15d4b3e3d186bc3f87e43dad7cda165d0ac4"
+  },
+  {
+    "file": "11-nova-receita.jpg",
+    "original_name": "Screenshot_2026-10-21-19-14-54-446_mz.bolso.app.jpg",
+    "sha256": "90f0c716e078f7c4830d3540312f12020c3f4ae7b6165e83a43c5bf1480cbc09"
+  },
+  {
+    "file": "12-transferencia.jpg",
+    "original_name": "Screenshot_2026-10-21-19-14-58-056_mz.bolso.app.jpg",
+    "sha256": "f8d1689f2133cdf8c6aa89ac45d9c3255bb0b9cb701c3c0b60535e50ad185f97"
+  },
+  {
+    "file": "13-contas.jpg",
+    "original_name": "Screenshot_2026-10-21-19-15-07-691_mz.bolso.app.jpg",
+    "sha256": "6bfd5321275f05609d22fe15052f138842a4f080c0dfe762220b16038d27ef23"
+  },
+  {
+    "file": "14-contas-banco-poupanca.jpg",
+    "original_name": "Screenshot_2026-10-21-19-15-18-221_mz.bolso.app.jpg",
+    "sha256": "a69b3df1d6c28d66d3ba394a867b9c4f65e49420f4614e1514c4b89a5154d5f3"
+  },
+  {
+    "file": "15-relatorios.jpg",
+    "original_name": "Screenshot_2026-10-21-19-15-23-429_mz.bolso.app.jpg",
+    "sha256": "2841dcef607ec9bb37c853ef3c4afb2b6fbcb548dc0f11a545729a8348d8126f"
+  },
+  {
+    "file": "16-relatorios-categorias.jpg",
+    "original_name": "Screenshot_2026-10-21-19-15-29-228_mz.bolso.app.jpg",
+    "sha256": "7ff3a2e114e2a3d18019951c89b0df0604f079178f260b3a4de8a606efbe534f"
+  },
+  {
+    "file": "17-definicoes.jpg",
+    "original_name": "Screenshot_2026-10-21-19-15-38-177_mz.bolso.app.jpg",
+    "sha256": "a024b44e82446e4441f1172dd44c2ef2f32b8ffbe0f09a48bca71f5b4a797074"
+  },
+  {
+    "file": "18-backup-e-modulos.jpg",
+    "original_name": "Screenshot_2026-10-21-19-15-42-207_mz.bolso.app.jpg",
+    "sha256": "a83320062f0b856fa9da9bd1b494cb7a93aa6f2bad8a425bbd2b4f7de9f15446"
+  }
+]

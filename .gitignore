@@ -8,3 +8,6 @@ android/**/build/
 *.keystore
 *.jks
 .DS_Store
+
+# Artefacto fornecido e explicitamente arquivado; restantes APKs continuam ignorados.
+!releases/v2.0.0/BolsoMZ-Android-v2.0.apk

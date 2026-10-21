@@ -1,3 +1,5 @@
+> Relatório histórico preservado. Para a importação de 21/10/2026 e o âmbito dos novos ensaios, consultar [VALIDACAO_2026-10-21.md](docs/VALIDACAO_2026-10-21.md).
+
 # Relatório de validação — BolsoMZ 1.0
 
 Data de validação: **21/10/2026**.

@@ -1,0 +1,62 @@
+{
+  "target": "imports/android-v2.0.0",
+  "checks": 9,
+  "passed": 5,
+  "unmet_requirements": 4,
+  "results": [
+    {
+      "id": "M01",
+      "description": "Valores decimais são convertidos para centavos inteiros",
+      "status": "PASS",
+      "evidence": "0,29 MT = 29 centavos; 3 casas decimais rejeitadas."
+    },
+    {
+      "id": "M02",
+      "description": "Receitas e despesas atualizam o saldo por conta e o total",
+      "status": "PASS",
+      "evidence": "Total = 1.005,00 MT."
+    },
+    {
+      "id": "M03",
+      "description": "Transferência interna conserva o total e cobra apenas a taxa",
+      "status": "PASS",
+      "evidence": "1.000,00 -> 990,00 MT com taxa de 10,00 MT."
+    },
+    {
+      "id": "M04",
+      "description": "Reservar e resgatar poupança conserva o património",
+      "status": "PASS",
+      "evidence": "Reserva final 150,00 MT; património 1.000,00 MT."
+    },
+    {
+      "id": "M05",
+      "description": "Data inexistente e despesa sem saldo são rejeitadas",
+      "status": "PASS",
+      "evidence": "30/02 e saldo insuficiente rejeitados."
+    },
+    {
+      "id": "G01",
+      "description": "Eliminar uma transferência e a respetiva taxa como um único grupo",
+      "status": "FAIL",
+      "evidence": "Fica uma taxa isolada de 10,00 MT; total 990,00 MT. Não existe vínculo/grupo de operação."
+    },
+    {
+      "id": "G02",
+      "description": "Mesmo pedido de importação/sincronização é idempotente",
+      "status": "FAIL",
+      "evidence": "A mesma idempotencyKey cria 2 receitas; total 1.020,00 MT em vez de 1.010,00 MT."
+    },
+    {
+      "id": "G03",
+      "description": "Soma de saldos mantém o intervalo inteiro seguro",
+      "status": "FAIL",
+      "evidence": "O motor aceita saldo acumulado fora de Number.MAX_SAFE_INTEGER."
+    },
+    {
+      "id": "G04",
+      "description": "Registo falha quando nenhum armazenamento consegue gravar",
+      "status": "FAIL",
+      "evidence": "createUser resolve com sucesso, mas listUsers devolve 0 contas; nenhuma gravação confirmada."
+    }
+  ]
+}

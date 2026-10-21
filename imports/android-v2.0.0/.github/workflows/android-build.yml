@@ -1,0 +1,33 @@
+name: Build BolsoMZ Android v2 APK
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código-fonte
+        uses: actions/checkout@v4
+
+      - name: Configurar JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Configurar Android SDK (API 35 / Android 15)
+        uses: android-actions/setup-android@v3
+
+      - name: Compilar APK Release Assinado
+        run: gradle assembleRelease
+
+      - name: Publicar Artefacto BolsoMZ-Android-v2.0.apk
+        uses: actions/upload-artifact@v4
+        with:
+          name: BolsoMZ-Android-v2.0
+          path: app/build/outputs/apk/release/*.apk
