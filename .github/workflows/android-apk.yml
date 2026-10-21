@@ -16,8 +16,8 @@ jobs:
           node-version: '22'
       - name: Testes e integridade antes da compilação
         run: |
-          npm test
           npm run android:sync
+          npm test
       - uses: actions/setup-java@v4
         with:
           distribution: temurin

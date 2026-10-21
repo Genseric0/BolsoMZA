@@ -18,5 +18,7 @@ jobs:
           node --check app.js
           node --check core.js
           node --check vault.js
+      - name: Sincronizar recursos Android
+        run: npm run android:sync
       - name: Executar testes
         run: npm test
