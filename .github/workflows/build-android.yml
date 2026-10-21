@@ -19,7 +19,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test -s BolsoMZ-v1.0-projeto-Android.zip
+          if [ ! -s BolsoMZ-v1.0-projeto-Android.zip ]; then
+            echo "::error title=Pacote BolsoMZ em falta::Carrega BolsoMZ-v1.0-projeto-Android.zip na raiz do repositorio (Add file > Upload files > Commit changes). Reexecutar o workflow sem carregar o ZIP nao resolve."
+            exit 1
+          fi
           test "$(stat -c%s BolsoMZ-v1.0-projeto-Android.zip)" -lt 50000000
           unzip -tqq BolsoMZ-v1.0-projeto-Android.zip
           mkdir -p project
