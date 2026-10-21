@@ -1,0 +1,22 @@
+name: BolsoMZ - Testes de regressão
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar sintaxe JavaScript
+        run: |
+          node --check app.js
+          node --check core.js
+          node --check vault.js
+      - name: Executar testes
+        run: npm test
